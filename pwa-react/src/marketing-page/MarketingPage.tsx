@@ -1,14 +1,14 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import AppAppBar from './components/AppAppBar';
-import Hero from './components/Hero';
-import LogoCollection from './components/LogoCollection';
-import Highlights from './components/Highlights';
-import Pricing from './components/Pricing';
-import Features from './components/Features';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
+import AppAppBar from './components/AppAppBar.tsx';
+import Hero from './components/Hero.tsx';
+import LogoCollection from './components/LogoCollection.tsx';
+import Highlights from './components/Highlights.tsx';
+import Pricing from './components/Pricing.tsx';
+import Features from './components/Features.tsx';
+import Testimonials from './components/Testimonials.tsx';
+import FAQ from './components/FAQ.tsx';
 import Footer from './components/Footer';
 import AppTheme from '../shared-theme/AppTheme';
 
