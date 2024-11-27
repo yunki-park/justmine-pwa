@@ -1,0 +1,4 @@
+// .eslintrc.json
+{
+    "extends": "react-app"
+}
