@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
@@ -30,9 +31,15 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
+  };
+
+  const handleSignIn = () => {
+    setOpen(false); // 드로어 닫기
+    navigate('/signin'); // Sign in 페이지로 이동
   };
 
   return (
@@ -78,7 +85,7 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="text" size="small">
+            <Button color="primary" variant="text" size="small" onClick={handleSignIn}>
               Sign in
             </Button>
             <Button color="primary" variant="contained" size="small">
@@ -127,7 +134,7 @@ export default function AppAppBar() {
                 </MenuItem>
                 <MenuItem>
                   <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
+                    가입하기
                   </Button>
                 </MenuItem>
               </Box>
