@@ -1,15 +1,15 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import MarketingPage from './marketing-page/MarketingPage.tsx';
-import Features from './marketing-page/components/Features.tsx';
-import Testimonials from './marketing-page/components/Testimonials.tsx';
-import Highlights from './marketing-page/components/Highlights.tsx';
-import Pricing from './marketing-page/components/Pricing.tsx';
-import FAQ from './marketing-page/components/FAQ.tsx';
-import Blog from './blog/Blog.tsx';
-import SignInSide from './sign-in-side/SignInSide.tsx';
-import Dashboard from './dashboard/Dashboard.tsx';
-import Checkout from './checkout/Checkout.tsx';
+import MarketingPage from './components/marketing-page/MarketingPage.tsx';
+import Features from './components/marketing-page/components/Features.tsx';
+import Testimonials from './components/marketing-page/components/Testimonials.tsx';
+import Highlights from './components/marketing-page/components/Highlights.tsx';
+import Pricing from './components/marketing-page/components/Pricing.tsx';
+import FAQ from './components/marketing-page/components/FAQ.tsx';
+import Blog from './components/blog/Blog.tsx';
+import SignInSide from './components/sign-in-side/SignInSide.tsx';
+import Dashboard from './components/dashboard/Dashboard.tsx';
+import Checkout from './components/checkout/Checkout.tsx';
 
 function App() {
   return (
