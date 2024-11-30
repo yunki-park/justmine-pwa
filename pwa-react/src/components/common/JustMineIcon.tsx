@@ -1,4 +1,5 @@
-import JustMineLogo from '../../assets/images/logo_text.png';
+import { useNavigate } from "react-router-dom";
+import JustMineLogo from "../../assets/images/logo_text.png";
 
 type JustMineIconProps = {
   width?: number;
@@ -6,14 +7,36 @@ type JustMineIconProps = {
   style?: React.CSSProperties;
 };
 
-export default function JustMineIcon({ /* width = 323, height = 82 */ width = 100, height = 25, style }: JustMineIconProps) {
+export default function JustMineIcon({
+  /* width = 323, height = 82 */ width = 100,
+  height = 25,
+  style,
+}: JustMineIconProps) {
+  const navigate = useNavigate();
+
+  // 현재 경로가 타겟 경로와 같은 경우 최상단으로 스크롤
+  // 다른 경로인 경우 루트 경로로 이동
+  const handleNavigation = (path: string) => {
+    if (window.location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate(path);
+    }
+  };
+
   return (
     <img
       src={JustMineLogo}
       alt="JustMine Logo"
       width={width}
       height={height}
-      style={{ marginRight: '8px', ...style }}
+      style={{
+        marginLeft: "8px",
+        marginRight: "8px",
+        cursor: "pointer",
+        ...style,
+      }}
+      onClick={handleNavigation.bind(null, "/")}
     />
   );
 }
