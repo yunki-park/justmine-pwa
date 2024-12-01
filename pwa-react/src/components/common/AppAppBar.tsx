@@ -15,6 +15,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import JustMineIcon from "./JustMineIcon.tsx";
 
 import ColorModeIconDropdown from "./shared-theme/ColorModeIconDropdown.tsx";
+import { createNavigationHandlers } from "../../utils/navigationHandlers";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -34,59 +35,22 @@ export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
+  // navigationHandlers 생성
+  const {
+    handleSignIn,
+    handleSignUp,
+    handleFeatures,
+    handleTestimonials,
+    handleHighlights,
+    handlePricing,
+    handleFAQ,
+    handleBlog,
+    handleDashboard,
+    handleCheckout,
+  } = createNavigationHandlers(navigate, setOpen);
+
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
-  };
-
-  // 각 페이지로 이동하는 함수들
-  const handleSignIn = () => {
-    setOpen(false);
-    navigate("/signin");
-  };
-
-  const handleSignUp = () => {
-    setOpen(false);
-    navigate("/signup");
-  };
-
-  const handleFeatures = () => {
-    setOpen(false);
-    navigate("/features");
-  };
-
-  const handleTestimonials = () => {
-    setOpen(false);
-    navigate("/testimonials");
-  };
-
-  const handleHighlights = () => {
-    setOpen(false);
-    navigate("/highlights");
-  };
-
-  const handlePricing = () => {
-    setOpen(false);
-    navigate("/pricing");
-  };
-
-  const handleFAQ = () => {
-    setOpen(false);
-    navigate("/faq");
-  };
-
-  const handleBlog = () => {
-    setOpen(false);
-    navigate("/blog");
-  };
-
-  const handleDashboard = () => {
-    setOpen(false);
-    navigate("/dashboard");
-  };
-
-  const handleCheckout = () => {
-    setOpen(false);
-    navigate("/checkout");
   };
 
   return (
