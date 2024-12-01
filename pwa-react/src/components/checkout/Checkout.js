@@ -18,7 +18,7 @@ import InfoMobile from './components/InfoMobile.tsx';
 import PaymentForm from './components/PaymentForm.tsx';
 import Review from './components/Review.tsx';
 import JustMineIcon from '../common/JustMineIcon.tsx';
-import AppTheme from '../../shared-theme/AppTheme.tsx';
+import AppTheme from '../../common/shared-theme/AppTheme.tsx'
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown.tsx';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];

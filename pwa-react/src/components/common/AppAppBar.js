@@ -12,9 +12,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import JustMineIcon from '../../common/JustMineIcon.tsx';
+import JustMineIcon from './JustMineIcon.tsx';
 
-import ColorModeIconDropdown from '../../common/shared-theme/ColorModeIconDropdown.tsx';
+import ColorModeIconDropdown from './shared-theme/ColorModeIconDropdown.tsx';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',

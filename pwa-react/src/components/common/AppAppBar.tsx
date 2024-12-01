@@ -12,9 +12,9 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import JustMineIcon from "../../common/JustMineIcon.tsx";
+import JustMineIcon from "./JustMineIcon.tsx";
 
-import ColorModeIconDropdown from "../../common/shared-theme/ColorModeIconDropdown.tsx";
+import ColorModeIconDropdown from "./shared-theme/ColorModeIconDropdown.tsx";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -229,20 +229,30 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem onClick={handleFeatures}>Features</MenuItem>
+                <MenuItem onClick={handleTestimonials}>Testimonials</MenuItem>
+                <MenuItem onClick={handleHighlights}>Highlights</MenuItem>
+                <MenuItem onClick={handlePricing}>Pricing</MenuItem>
+                <MenuItem onClick={handleFAQ}>FAQ</MenuItem>
+                <MenuItem onClick={handleBlog}>Blog</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    fullWidth
+                    onClick={handleSignUp}
+                  >
                     Sign up
                   </Button>
                 </MenuItem>
                 <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    fullWidth
+                    onClick={handleSignIn}
+                  >
                     Sign in
                   </Button>
                 </MenuItem>
