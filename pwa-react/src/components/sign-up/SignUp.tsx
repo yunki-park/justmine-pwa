@@ -38,7 +38,7 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
-  height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
+  // height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
   minHeight: "100%",
   padding: theme.spacing(2),
   [theme.breakpoints.up("sm")]: {
@@ -124,9 +124,12 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
       <CssBaseline enableColorScheme />
 
       <AppAppBar />
-      <SignUpContainer direction="column" justifyContent="space-between">
+      <SignUpContainer
+        direction="column"
+        justifyContent="space-between"
+        sx={{ my: 4 }}
+      >
         <Card variant="outlined">
-          <JustMineIcon />
           <Typography
             component="h1"
             variant="h4"

@@ -16,7 +16,7 @@ export default function Blog(props: { disableCustomTheme?: boolean }) {
       <Container
         maxWidth="lg"
         component="main"
-        sx={{ display: "flex", flexDirection: "column", my: 16, gap: 4 }}
+        sx={{ display: "flex", flexDirection: "column", gap: 4 }}
       >
         <MainContent />
         <Latest />

@@ -58,7 +58,6 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
             xs: 4,
             sm: 0,
           },
-          my: 16,
         }}
       >
         <Grid

@@ -1,7 +1,7 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
-import SignInCard from "./SignInCard";
-import Content from "./Content";
+import SignInCard from "./SignInCard.tsx";
+import Content from "./Content.tsx";
 import AppTheme from "../common/shared-theme/AppTheme";
 import AppAppBar from "../common//AppAppBar.tsx";
 
@@ -20,7 +20,6 @@ export default function SignInSide(props: { disableCustomTheme?: boolean }) {
             height: "calc((1 - var(--template-frame-height, 0)) * 100%)",
             marginTop: "max(40px - var(--template-frame-height, 0px), 0px)",
             minHeight: "100%",
-            my: 16,
           },
           (theme) => ({
             "&::before": {

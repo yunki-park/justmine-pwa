@@ -82,7 +82,7 @@ export default function Dashboard() {
       <CssBaseline enableColorScheme />
 
       <AppAppBar />
-      <Box sx={{ display: "flex", my: 16 }}>
+      <Box sx={{ display: "flex" }}>
         <SideMenu />
         <AppNavbar />
         {/* Main content */}
