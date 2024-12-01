@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { useLocation } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -52,6 +53,7 @@ export default function AppAppBar() {
   };
 
   const internalNav = useInternalNavigation();
+  const location = useLocation();
 
   return (
     <AppBar
@@ -101,23 +103,6 @@ export default function AppAppBar() {
               </Box>
             )}
           </Box>
-          {/* 외부 네비게이션 버튼 */}
-          {[
-            { label: "Blog", onClick: useHandleBlog(setOpen) },
-            { label: "Dashboard", onClick: useHandleDashboard(setOpen) },
-            { label: "Checkout", onClick: useHandleCheckout(setOpen) },
-          ].map((item, index) => (
-            <Button
-              key={index}
-              variant="text"
-              color="secondary"
-              size="small"
-              onClick={item.onClick}
-              sx={{ minWidth: 0, opacity: 1 }}
-            >
-              {item.label}
-            </Button>
-          ))}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -125,9 +110,36 @@ export default function AppAppBar() {
               alignItems: "center",
             }}
           >
+            {/* 외부 네비게이션 버튼 */}
+            {[
+              { path: "/blog", label: "Blog", onClick: useHandleBlog(setOpen) },
+              {
+                path: "/dashboard",
+                label: "Dashboard",
+                onClick: useHandleDashboard(setOpen),
+              },
+              {
+                path: "/checkout",
+                label: "Checkout",
+                onClick: useHandleCheckout(setOpen),
+              },
+            ].map((item, index) => (
+              <Button
+                key={index}
+                variant={location.pathname === item.path ? "contained" : "text"}
+                color="secondary"
+                size="small"
+                onClick={item.onClick}
+                sx={{ minWidth: 0, opacity: 1 }}
+              >
+                {item.label}
+              </Button>
+            ))}
             <Button
               color="primary"
-              variant="text"
+              variant={
+                location.pathname === "/signin" ? "contained" : "outlined"
+              }
               size="small"
               onClick={useHandleSignIn(setOpen)}
             >
@@ -135,7 +147,9 @@ export default function AppAppBar() {
             </Button>
             <Button
               color="primary"
-              variant="contained"
+              variant={
+                location.pathname === "/signup" ? "contained" : "outlined"
+              }
               size="small"
               onClick={useHandleSignUp(setOpen)}
             >
@@ -185,8 +199,10 @@ export default function AppAppBar() {
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button
-                    color="primary"
-                    variant="contained"
+                    color="secondary"
+                    variant={
+                      location.pathname === "/signup" ? "contained" : "outlined"
+                    }
                     fullWidth
                     onClick={useHandleSignUp(setOpen)}
                   >
@@ -195,8 +211,10 @@ export default function AppAppBar() {
                 </MenuItem>
                 <MenuItem>
                   <Button
-                    color="primary"
-                    variant="outlined"
+                    color="secondary"
+                    variant={
+                      location.pathname === "/signin" ? "contained" : "outlined"
+                    }
                     fullWidth
                     onClick={useHandleSignIn(setOpen)}
                   >
