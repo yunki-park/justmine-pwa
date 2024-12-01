@@ -39,9 +39,26 @@ const StyledBox = styled("div")(({ theme }) => ({
     outlineColor: "hsla(220, 20%, 42%, 0.1)",
     borderColor: theme.palette.grey[700],
   }),
+  cursor: "pointer",
+  transition: "transform 0.3s ease-in-out, background-color 0.3s ease-in-out",
+  "&:hover": {
+    transform: "scale(1.01)",
+  },
+  "&.clicked": {
+    opacity: 0.6,
+    transform: "scale(0.99)",
+  },
 }));
 
 export default function Hero() {
+  const [clicked, setClicked] = React.useState(false);
+  const handleDashboard = useHandleDashboard();
+
+  const handleClick = () => {
+    setClicked(true);
+    handleDashboard();
+  };
+
   return (
     <Box
       id="hero"
@@ -153,6 +170,7 @@ export default function Hero() {
         </Stack>
         <StyledBox
           id="image"
+          className={clicked ? "clicked" : ""}
           onClick={handleClick}
         />
       </Container>
