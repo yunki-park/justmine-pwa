@@ -55,7 +55,7 @@ export default function AppAppBar() {
 
   return (
     <AppBar
-      position="fixed"
+      position="sticky"
       enableColorOnDark
       sx={{
         boxShadow: 0,
