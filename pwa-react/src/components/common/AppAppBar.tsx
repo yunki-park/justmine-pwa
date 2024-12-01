@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -15,7 +14,18 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import JustMineIcon from "./JustMineIcon.tsx";
 
 import ColorModeIconDropdown from "./shared-theme/ColorModeIconDropdown.tsx";
-import { createNavigationHandlers } from "../../utils/navigationHandlers";
+import {
+  useHandleFeatures,
+  useHandleTestimonials,
+  useHandleHighlights,
+  useHandlePricing,
+  useHandleFAQ,
+  useHandleBlog,
+  useHandleDashboard,
+  useHandleCheckout,
+  useHandleSignIn,
+  useHandleSignUp,
+} from "../../hooks/navigationHandlers.ts";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -33,21 +43,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export default function AppAppBar() {
   const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate();
-
-  // navigationHandlers 생성
-  const {
-    handleSignIn,
-    handleSignUp,
-    handleFeatures,
-    handleTestimonials,
-    handleHighlights,
-    handlePricing,
-    handleFAQ,
-    handleBlog,
-    handleDashboard,
-    handleCheckout,
-  } = createNavigationHandlers(navigate, setOpen);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -75,7 +70,7 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
-                onClick={handleFeatures}
+                onClick={useHandleFeatures(setOpen)}
               >
                 Features
               </Button>
@@ -83,7 +78,7 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
-                onClick={handleTestimonials}
+                onClick={useHandleTestimonials(setOpen)}
               >
                 Testimonials
               </Button>
@@ -91,7 +86,7 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
-                onClick={handleHighlights}
+                onClick={useHandleHighlights(setOpen)}
               >
                 Highlights
               </Button>
@@ -99,7 +94,7 @@ export default function AppAppBar() {
                 variant="text"
                 color="info"
                 size="small"
-                onClick={handlePricing}
+                onClick={useHandlePricing(setOpen)}
               >
                 Pricing
               </Button>
@@ -108,7 +103,7 @@ export default function AppAppBar() {
                 color="info"
                 size="small"
                 sx={{ minWidth: 0 }}
-                onClick={handleFAQ}
+                onClick={useHandleFAQ(setOpen)}
               >
                 FAQ
               </Button>
@@ -117,7 +112,7 @@ export default function AppAppBar() {
                 color="info"
                 size="small"
                 sx={{ minWidth: 0 }}
-                onClick={handleBlog}
+                onClick={useHandleBlog(setOpen)}
               >
                 Blog
               </Button>
@@ -126,7 +121,7 @@ export default function AppAppBar() {
                 color="info"
                 size="small"
                 sx={{ minWidth: 0 }}
-                onClick={handleDashboard}
+                onClick={useHandleDashboard(setOpen)}
               >
                 Dashboard
               </Button>
@@ -135,7 +130,7 @@ export default function AppAppBar() {
                 color="info"
                 size="small"
                 sx={{ minWidth: 0 }}
-                onClick={handleCheckout}
+                onClick={useHandleCheckout(setOpen)}
               >
                 Checkout
               </Button>
@@ -152,7 +147,7 @@ export default function AppAppBar() {
               color="primary"
               variant="text"
               size="small"
-              onClick={handleSignIn}
+              onClick={useHandleSignIn(setOpen)}
             >
               Sign in
             </Button>
@@ -160,7 +155,7 @@ export default function AppAppBar() {
               color="primary"
               variant="contained"
               size="small"
-              onClick={handleSignUp}
+              onClick={useHandleSignUp(setOpen)}
             >
               Sign up
             </Button>
@@ -193,19 +188,25 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem onClick={handleFeatures}>Features</MenuItem>
-                <MenuItem onClick={handleTestimonials}>Testimonials</MenuItem>
-                <MenuItem onClick={handleHighlights}>Highlights</MenuItem>
-                <MenuItem onClick={handlePricing}>Pricing</MenuItem>
-                <MenuItem onClick={handleFAQ}>FAQ</MenuItem>
-                <MenuItem onClick={handleBlog}>Blog</MenuItem>
+                <MenuItem onClick={useHandleFeatures(setOpen)}>
+                  Features
+                </MenuItem>
+                <MenuItem onClick={useHandleTestimonials(setOpen)}>
+                  Testimonials
+                </MenuItem>
+                <MenuItem onClick={useHandleHighlights(setOpen)}>
+                  Highlights
+                </MenuItem>
+                <MenuItem onClick={useHandlePricing(setOpen)}>Pricing</MenuItem>
+                <MenuItem onClick={useHandleFAQ(setOpen)}>FAQ</MenuItem>
+                <MenuItem onClick={useHandleBlog(setOpen)}>Blog</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button
                     color="primary"
                     variant="contained"
                     fullWidth
-                    onClick={handleSignUp}
+                    onClick={useHandleSignUp(setOpen)}
                   >
                     Sign up
                   </Button>
@@ -215,7 +216,7 @@ export default function AppAppBar() {
                     color="primary"
                     variant="outlined"
                     fullWidth
-                    onClick={handleSignIn}
+                    onClick={useHandleSignIn(setOpen)}
                   >
                     Sign in
                   </Button>

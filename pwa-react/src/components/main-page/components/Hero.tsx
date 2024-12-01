@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 
 import { visuallyHidden } from "@mui/utils";
 import { styled } from "@mui/material/styles";
+import { useHandleDashboard } from "../../../hooks/navigationHandlers";
 
 const StyledBox = styled("div")(({ theme }) => ({
   alignSelf: "center",
@@ -150,7 +151,10 @@ export default function Hero() {
             .
           </Typography>
         </Stack>
-        <StyledBox id="image" />
+        <StyledBox
+          id="image"
+          onClick={handleClick}
+        />
       </Container>
     </Box>
   );
