@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { styled, alpha } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -25,6 +26,8 @@ import {
   useHandleCheckout,
   useHandleSignIn,
   useHandleSignUp,
+  useInternalNavigation,
+  useCheckMainPage,
 } from "../../hooks/navigationHandlers.ts";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -48,6 +51,8 @@ export default function AppAppBar() {
     setOpen(newOpen);
   };
 
+  const internalNav = useInternalNavigation();
+
   return (
     <AppBar
       position="fixed"
@@ -65,77 +70,53 @@ export default function AppAppBar() {
             sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
           >
             <JustMineIcon />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={useHandleFeatures(setOpen)}
-              >
-                Features
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={useHandleTestimonials(setOpen)}
-              >
-                Testimonials
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={useHandleHighlights(setOpen)}
-              >
-                Highlights
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                onClick={useHandlePricing(setOpen)}
-              >
-                Pricing
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-                onClick={useHandleFAQ(setOpen)}
-              >
-                FAQ
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-                onClick={useHandleBlog(setOpen)}
-              >
-                Blog
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-                onClick={useHandleDashboard(setOpen)}
-              >
-                Dashboard
-              </Button>
-              <Button
-                variant="text"
-                color="info"
-                size="small"
-                sx={{ minWidth: 0 }}
-                onClick={useHandleCheckout(setOpen)}
-              >
-                Checkout
-              </Button>
-            </Box>
+            {useCheckMainPage() && (
+              <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                {/* 내부 네비게이션 버튼 */}
+                {[
+                  { label: "Features", onClick: internalNav.handleFeatures },
+                  {
+                    label: "Testimonials",
+                    onClick: internalNav.handleTestimonials,
+                  },
+                  {
+                    label: "Highlights",
+                    onClick: internalNav.handleHighlights,
+                  },
+                  { label: "Pricing", onClick: internalNav.handlePricing },
+                  { label: "FAQ", onClick: internalNav.handleFAQ },
+                ].map((item, index) => (
+                  <Button
+                    key={index}
+                    variant="text"
+                    color="info"
+                    size="small"
+                    onClick={item.onClick}
+                    sx={{ minWidth: 0, opacity: 0.8 }}
+                  >
+                    {item.label}
+                  </Button>
+                ))}
+              </Box>
+            )}
           </Box>
+          {/* 외부 네비게이션 버튼 */}
+          {[
+            { label: "Blog", onClick: useHandleBlog(setOpen) },
+            { label: "Dashboard", onClick: useHandleDashboard(setOpen) },
+            { label: "Checkout", onClick: useHandleCheckout(setOpen) },
+          ].map((item, index) => (
+            <Button
+              key={index}
+              variant="text"
+              color="secondary"
+              size="small"
+              onClick={item.onClick}
+              sx={{ minWidth: 0, opacity: 1 }}
+            >
+              {item.label}
+            </Button>
+          ))}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },

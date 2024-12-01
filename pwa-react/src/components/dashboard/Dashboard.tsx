@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import type {} from "@mui/x-date-pickers/themeAugmentation";
@@ -11,10 +10,12 @@ import { alpha } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import AppNavbar from "./components/AppNavbar";
-import Header from "./components/Header";
-import MainGrid from "./components/MainGrid";
-import SideMenu from "./components/SideMenu";
+
+import AppAppBar from "../common/AppAppBar.tsx";
+import AppNavbar from "./components/AppNavbar.tsx";
+import Header from "./components/Header.tsx";
+import MainGrid from "./components/MainGrid.tsx";
+import SideMenu from "./components/SideMenu.tsx";
 import AppTheme from "../common/shared-theme/AppTheme";
 import {
   chartsCustomizations,
@@ -29,6 +30,10 @@ const xThemeComponents = {
   ...datePickersCustomizations,
   ...treeViewCustomizations,
 };
+
+export interface DashboardLoadingProps {
+  loading?: boolean;
+}
 
 export default function Dashboard() {
   const [loading, setLoading] = useState(true);
@@ -49,34 +54,35 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <AppTheme themeComponents={xThemeComponents}>
-        <CssBaseline enableColorScheme />
-        <Box sx={{ display: "flex" }}>
-          <Skeleton width={240} height="100vh" /> {/* SideMenu 스켈레톤 */}
-          <Box sx={{ flexGrow: 1, p: 3 }}>
-            <Skeleton height={64} width="100%" /> {/* AppNavbar 스켈레톤 */}
-            <Stack
-              spacing={2}
-              sx={{
-                alignItems: "center",
-                mx: 3,
-                pb: 5,
-                mt: { xs: 8, md: 0 },
-              }}
-            >
-              <Skeleton height={64} width="100%" /> {/* Header 스켈레톤 */}
-              <Skeleton height={400} width="100%" /> {/* MainGrid 스켈레톤 */}
-            </Stack>
-          </Box>
+      <Box sx={{ display: "flex" }}>
+        <SideMenu loading={loading} />
+        {/* <AppNavbar loading={loading} /> */}
+        {/* Main content */}
+        <Box sx={{ flexGrow: 1, p: 3, gap: 4 }}>
+          <AppNavbar loading={loading} />
+          {/* <Stack
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              mx: 3,
+              pb: 5,
+              mt: { xs: 8, md: 0 },
+            }}
+          > */}
+          <Header loading={loading} />
+          <MainGrid loading={loading} />
+          {/* </Stack> */}
         </Box>
-      </AppTheme>
+      </Box>
     );
   }
 
   return (
     <AppTheme themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
-      <Box sx={{ display: "flex" }}>
+
+      <AppAppBar />
+      <Box sx={{ display: "flex", my: 16 }}>
         <SideMenu />
         <AppNavbar />
         {/* Main content */}

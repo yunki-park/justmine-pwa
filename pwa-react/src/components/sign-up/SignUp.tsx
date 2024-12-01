@@ -15,8 +15,8 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../common/shared-theme/AppTheme";
 import { GoogleIcon, FacebookIcon } from "./CustomIcons";
-import ColorModeSelect from "../common/shared-theme/ColorModeSelect";
 import JustMineIcon from "../common/JustMineIcon";
+import AppAppBar from "../common//AppAppBar.tsx";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -122,7 +122,8 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
+
+      <AppAppBar />
       <SignUpContainer direction="column" justifyContent="space-between">
         <Card variant="outlined">
           <JustMineIcon />

@@ -1,4 +1,21 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { scrollToSection } from '../utils/scrollUtil';
+
+export const useCheckMainPage = (): boolean => {
+  const location = useLocation();
+  return location.pathname === "/";
+};
+
+// 내부 네비게이션 핸들러
+export const useInternalNavigation = () => {
+  return {
+    handleFeatures: () => scrollToSection("features"),
+    handleTestimonials: () => scrollToSection("testimonials"),
+    handleHighlights: () => scrollToSection("highlights"),
+    handlePricing: () => scrollToSection("pricing"),
+    handleFAQ: () => scrollToSection("faq"),
+  };
+};
 
 export const useHandleSignIn = (setOpen?: (open: boolean) => void) => {
   const navigate = useNavigate();
