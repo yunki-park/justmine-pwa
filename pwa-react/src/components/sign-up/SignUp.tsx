@@ -15,7 +15,6 @@ import MuiCard from "@mui/material/Card";
 import { styled } from "@mui/material/styles";
 import AppTheme from "../common/shared-theme/AppTheme";
 import { GoogleIcon, FacebookIcon } from "./CustomIcons";
-import JustMineIcon from "../common/JustMineIcon";
 import AppAppBar from "../common//AppAppBar.tsx";
 
 const Card = styled(MuiCard)(({ theme }) => ({
