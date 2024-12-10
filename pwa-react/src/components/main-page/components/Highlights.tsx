@@ -88,7 +88,7 @@ export default function Highlights() {
         </Box>
         <Grid container spacing={2}>
           {items.map((item, index) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+            <Grid size={{ xs: 6, sm: 6, md: 4 }} key={index}>
               <Stack
                 direction="column"
                 component={Card}
@@ -102,15 +102,39 @@ export default function Highlights() {
                   backgroundColor: "grey.800",
                 }}
               >
-                <Box sx={{ opacity: "50%" }}>{item.icon}</Box>
-                <div>
-                  <Typography gutterBottom sx={{ fontWeight: "medium" }}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "grey.400" }}>
-                    {item.description}
-                  </Typography>
-                </div>
+                <Stack
+                  direction={{ xs: "row", sm: "column" }}
+                  spacing={{ xs: 1, sm: 1 }}
+                  alignItems={{ xs: "center", sm: "flex-start" }}
+                >
+                  <Box
+                    sx={{
+                      opacity: "50%",
+                      fontSize: { xs: "1.25rem", sm: "1.5rem" },
+                    }}
+                  >
+                    {item.icon}
+                  </Box>
+                  <div>
+                    <Typography
+                      sx={{
+                        fontWeight: "medium",
+                        fontSize: { xs: "0.875rem", sm: "1rem" },
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: "grey.400",
+                        display: { xs: "none", sm: "block" }, // xs에서 숨김
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </div>
+                </Stack>
               </Stack>
             </Grid>
           ))}
