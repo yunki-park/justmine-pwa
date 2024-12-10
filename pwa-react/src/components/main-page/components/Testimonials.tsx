@@ -70,11 +70,6 @@ const darkLogos = [
   "https://assets-global.website-files.com/61ed56ae9da9fd7e0ef0a967/655f5ca4e548b0deb1041c33_Ankara-black.svg",
 ];
 
-const logoStyle = {
-  width: "64px",
-  opacity: 0.3,
-};
-
 export default function Testimonials() {
   const theme = useTheme();
   const logos = theme.palette.mode === "light" ? darkLogos : whiteLogos;

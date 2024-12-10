@@ -67,8 +67,8 @@ const ResponsiveCardGrid: React.FC<ResponsiveCardGridProps> = ({
   const remainingCount = userTestimonials.length - 1;
 
   const logoStyle = {
-    width: "40px",
-    height: "40px",
+    width: "64px",
+    opacity: 0.3,
   };
 
   return (
