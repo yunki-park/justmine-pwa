@@ -11,6 +11,9 @@ import Typography from "@mui/material/Typography";
 import FacebookIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/X";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import ShareIcon from "@mui/icons-material/Share";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
 import JustMineIcon from "./JustMineIcon.tsx";
 
 function Copyright() {
@@ -193,7 +196,7 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://github.com/mui"
+            href="https://github.com/yunki-park"
             aria-label="GitHub"
             sx={{ alignSelf: "center" }}
           >
@@ -202,13 +205,22 @@ export default function Footer() {
           <IconButton
             color="inherit"
             size="small"
-            href="https://x.com/MaterialUI"
+            // href="https://x.com/MaterialUI"
             aria-label="X"
             sx={{ alignSelf: "center" }}
           >
-            <TwitterIcon />
+            <ContactPageIcon />
           </IconButton>
           <IconButton
+            color="inherit"
+            size="small"
+            href="https://justmine.releasenotes.io/"
+            aria-label="ReleaseNotes"
+            sx={{ alignSelf: "center" }}
+          >
+            <EditNoteIcon />
+          </IconButton>
+          {/* <IconButton
             color="inherit"
             size="small"
             href="https://www.linkedin.com/company/mui/"
@@ -216,6 +228,15 @@ export default function Footer() {
             sx={{ alignSelf: "center" }}
           >
             <LinkedInIcon />
+          </IconButton> */}
+          <IconButton
+            color="inherit"
+            size="small"
+            // href="https://www.linkedin.com/company/mui/"
+            aria-label="LinkedIn"
+            sx={{ alignSelf: "center" }}
+          >
+            <ShareIcon />
           </IconButton>
         </Stack>
       </Box>
