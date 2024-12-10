@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Helmet } from "react-helmet";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import AppAppBar from "../common/AppAppBar.tsx";
@@ -10,6 +12,9 @@ import AppTheme from "../common/shared-theme/AppTheme.tsx";
 export default function Blog(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
+      <Helmet>
+        <title>JustMine - Blog</title>
+      </Helmet>
       <CssBaseline enableColorScheme />
 
       <AppAppBar />

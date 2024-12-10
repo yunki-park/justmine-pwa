@@ -4,10 +4,14 @@ import SignInCard from "./SignInCard.tsx";
 import Content from "./Content.tsx";
 import AppTheme from "../common/shared-theme/AppTheme";
 import AppAppBar from "../common//AppAppBar.tsx";
+import { Helmet } from "react-helmet";
 
 export default function SignInSide(props: { disableCustomTheme?: boolean }) {
   return (
     <AppTheme {...props}>
+      <Helmet>
+        <title>JustMine - Sign in</title>
+      </Helmet>
       <CssBaseline enableColorScheme />
 
       <AppAppBar />

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 import "react-loading-skeleton/dist/skeleton.css";
 
@@ -79,6 +80,9 @@ export default function Dashboard() {
 
   return (
     <AppTheme themeComponents={xThemeComponents}>
+      <Helmet>
+        <title>JustMine - Dashboard</title>
+      </Helmet>
       <CssBaseline enableColorScheme />
 
       <AppAppBar />

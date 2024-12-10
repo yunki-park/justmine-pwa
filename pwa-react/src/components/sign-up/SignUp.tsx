@@ -16,6 +16,7 @@ import { styled } from "@mui/material/styles";
 import AppTheme from "../common/shared-theme/AppTheme";
 import { GoogleIcon, FacebookIcon } from "./CustomIcons";
 import AppAppBar from "../common//AppAppBar.tsx";
+import { Helmet } from "react-helmet";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -120,6 +121,9 @@ export default function SignUp(props: { disableCustomTheme?: boolean }) {
 
   return (
     <AppTheme {...props}>
+      <Helmet>
+        <title>JustMine - Sign up</title>
+      </Helmet>
       <CssBaseline enableColorScheme />
 
       <AppAppBar />

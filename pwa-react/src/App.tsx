@@ -15,12 +15,14 @@ import SignUp from "./components/sign-up/SignUp.tsx";
 function App() {
   return (
     <Routes>
+      {/* 메인 페이지 내부 네비게이션 */}
       <Route path="/" element={<MainPage />} />
       <Route path="/features" element={<Features />} />
       <Route path="/testimonials" element={<Testimonials />} />
       <Route path="/highlights" element={<Highlights />} />
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/faq" element={<FAQ />} />
+      {/* 외부 링크 */}
       <Route path="/blog" element={<Blog />} />
       <Route path="/dashboard/*" element={<Dashboard />} />
       <Route path="/checkout" element={<Checkout />} />

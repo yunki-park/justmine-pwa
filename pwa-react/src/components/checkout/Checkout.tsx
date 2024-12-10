@@ -20,6 +20,7 @@ import Review from "./components/Review.tsx";
 import JustMineIcon from "../common/JustMineIcon.tsx";
 import AppTheme from "../common/shared-theme/AppTheme.tsx";
 import AppAppBar from "../common/AppAppBar.tsx";
+import { Helmet } from "react-helmet";
 
 const steps = ["Shipping address", "Payment details", "Review your order"];
 function getStepContent(step: number) {
@@ -44,6 +45,9 @@ export default function Checkout(props: { disableCustomTheme?: boolean }) {
   };
   return (
     <AppTheme {...props}>
+      <Helmet>
+        <title>JustMine - Checkout</title>
+      </Helmet>
       <CssBaseline enableColorScheme />
 
       <AppAppBar />
