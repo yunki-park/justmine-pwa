@@ -5,8 +5,9 @@ import Card from "@mui/material/Card";
 import MuiChip from "@mui/material/Chip";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
-
 import { styled } from "@mui/material/styles";
+
+import { motion, AnimatePresence } from "framer-motion";
 
 import DevicesRoundedIcon from "@mui/icons-material/DevicesRounded";
 import EdgesensorHighRoundedIcon from "@mui/icons-material/EdgesensorHighRounded";
@@ -109,7 +110,16 @@ export function MobileLayout({
           />
         ))}
       </Box>
-      <Card variant="outlined">
+      <Card
+        variant="outlined"
+        sx={{
+          animation: "slideIn 1.0s ease-in-out", // 카드 슬라이드 인 애니메이션
+          "@keyframes slideIn": {
+            from: { opacity: 0, transform: "translateY(-20px)" },
+            to: { opacity: 1, transform: "translateY(0)" },
+          },
+        }}
+      >
         <Box
           sx={(theme) => ({
             mb: 2,
@@ -117,6 +127,7 @@ export function MobileLayout({
             backgroundPosition: "center",
             minHeight: 280,
             backgroundImage: "var(--items-imageLight)",
+            transition: "background-image 1.0s ease-in-out", // 배경 이미지 변경 애니메이션
             ...theme.applyStyles("dark", {
               backgroundImage: "var(--items-imageDark)",
             }),
@@ -132,12 +143,36 @@ export function MobileLayout({
         />
         <Box sx={{ px: 2, pb: 2 }}>
           <Typography
+            key={selectedFeature.title} // key를 설정하여 selectedFeature 변경 시 새로 렌더링
             gutterBottom
-            sx={{ color: "text.primary", fontWeight: "medium" }}
+            sx={{
+              color: "text.primary",
+              fontWeight: "medium",
+              opacity: 0, // 초기값
+              animation: "fadeIn 1.0s ease-in-out forwards",
+              "@keyframes fadeIn": {
+                from: { opacity: 0 },
+                to: { opacity: 1 },
+              },
+            }}
           >
             {selectedFeature.title}
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary", mb: 1.5 }}>
+
+          <Typography
+            key={selectedFeature.description} // key를 설정하여 selectedFeature 변경 시 새로 렌더링
+            variant="body2"
+            sx={{
+              color: "text.secondary",
+              mb: 1.5,
+              opacity: 0,
+              animation: "fadeIn 1.0s ease-in-out forwards",
+              "@keyframes fadeIn": {
+                from: { opacity: 0 },
+                to: { opacity: 1 },
+              },
+            }}
+          >
             {selectedFeature.description}
           </Typography>
         </Box>
@@ -255,6 +290,11 @@ export default function Features() {
               width: "100%",
               display: { xs: "none", sm: "flex" },
               pointerEvents: "none",
+              animation: "slideIn 1.0s ease-in-out",
+              "@keyframes slideIn": {
+                from: { opacity: 0, transform: "translateY(-20px)" },
+                to: { opacity: 1, transform: "translateY(0)" },
+              },
             }}
           >
             <Box
@@ -264,6 +304,7 @@ export default function Features() {
                 height: 500,
                 backgroundSize: "contain",
                 backgroundImage: "var(--items-imageLight)",
+                transition: "background-image 1.0s ease-in-out", // 배경 전환 애니메이션
                 ...theme.applyStyles("dark", {
                   backgroundImage: "var(--items-imageDark)",
                 }),
